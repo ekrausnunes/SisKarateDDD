@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using SisKarateDDD.MVC.AutoMapper;
 
 namespace SisKarateDDD.MVC
 {
@@ -17,7 +18,9 @@ namespace SisKarateDDD.MVC
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);   
+  
+            AutoMapperConfig.RegisterMapping();
         }
     }
 }

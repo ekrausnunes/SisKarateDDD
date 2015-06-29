@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SisKarateDDD.Domain.Interfaces;
+using SisKarateDDD.Domain.Interfaces.Repositories;
 using SisKarateDDD.Infra.Data.Context;
 
 namespace SisKarateDDD.Infra.Data.Repositories
