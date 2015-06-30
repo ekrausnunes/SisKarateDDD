@@ -19,8 +19,6 @@ namespace SisKarateDDD.Domain.Services
             _pessoaRepository = pessoaRepository;
         }
 
-
-
         public IEnumerable<Pessoa> BuscarPorNome(string nome)
         {
             return _pessoaRepository.BuscarPorNome(nome);

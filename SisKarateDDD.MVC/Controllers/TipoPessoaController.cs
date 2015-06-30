@@ -3,23 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using SisKarateDDD.Application.Interface;
+using SisKarateDDD.Domain.Entities;
+using SisKarateDDD.MVC.ViewModels;
 
 namespace SisKarateDDD.MVC.Controllers
 {
     public class TipoPessoaController : Controller
     {
+        private readonly ITipoPessoaAppService _tipoPessoaApp;
+
+        public TipoPessoaController(ITipoPessoaAppService tipoPessoaApp)
+        {
+            _tipoPessoaApp = tipoPessoaApp;
+        }
+
         //
         // GET: /TipoPessoa/
         public ActionResult Index()
         {
-            return View();
+            var tipoPessoaViewModel = Mapper.Map<IEnumerable<TipoPessoa>, IEnumerable<TipoPessoaViewModel>>(_tipoPessoaApp.GetAll());
+            return View(tipoPessoaViewModel);
         }
 
         //
         // GET: /TipoPessoa/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var tipoPessoa = _tipoPessoaApp.GetById(id);
+            var tipoPessoaViewModel = Mapper.Map<TipoPessoa, TipoPessoaViewModel>(tipoPessoa);
+            return View(tipoPessoaViewModel);
         }
 
         //
@@ -32,66 +46,61 @@ namespace SisKarateDDD.MVC.Controllers
         //
         // POST: /TipoPessoa/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(TipoPessoaViewModel tipoPessoa)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                var tipoPessoaDomain = Mapper.Map<TipoPessoaViewModel, TipoPessoa>(tipoPessoa);
+                _tipoPessoaApp.Add(tipoPessoaDomain);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(tipoPessoa);
         }
 
         //
         // GET: /TipoPessoa/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var tipoPessoa = _tipoPessoaApp.GetById(id);
+            var tipoPessoaViewModel = Mapper.Map<TipoPessoa, TipoPessoaViewModel>(tipoPessoa);
+            return View(tipoPessoaViewModel);
         }
 
         //
         // POST: /TipoPessoa/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(TipoPessoaViewModel tipoPessoa)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                var tipoPessoaDomain = Mapper.Map<TipoPessoaViewModel, TipoPessoa>(tipoPessoa);
+                _tipoPessoaApp.Update(tipoPessoaDomain);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(tipoPessoa);
         }
 
         //
         // GET: /TipoPessoa/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var tipoPessoa = _tipoPessoaApp.GetById(id);
+            var tipoPessoaViewModel = Mapper.Map<TipoPessoa, TipoPessoaViewModel>(tipoPessoa);
+            return View(tipoPessoaViewModel);
         }
 
         //
         // POST: /TipoPessoa/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryTokenAttribute]
+        public ActionResult Apagar(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var tipoPessoa = _tipoPessoaApp.GetById(id);
+            _tipoPessoaApp.Remove(tipoPessoa);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }
