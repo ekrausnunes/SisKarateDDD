@@ -14,7 +14,7 @@ namespace SisKarateDDD.MVC.AutoMapper
         protected override void Configure()
         {
             Mapper.CreateMap<PessoaViewModel, Pessoa>();
-            Mapper.CreateMap<TipoPessoaViewModel, TipoPessoa>();
+            Mapper.CreateMap<HistoricoFaixaViewModel, HistoricoFaixa>();
         }
     }
 }

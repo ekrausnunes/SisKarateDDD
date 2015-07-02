@@ -30,18 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\HistoricoFaixa.cs" />
     <Compile Include="Entities\Pessoa.cs" />
-    <Compile Include="Entities\TipoPessoa.cs" />
+    <Compile Include="Enumeradores\eFaixa.cs" />
+    <Compile Include="Enumeradores\eSexo.cs" />
+    <Compile Include="Enumeradores\eTipoPessoa.cs" />
+    <Compile Include="Interfaces\Repositories\IHistoricoFaixaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
-    <Compile Include="Interfaces\Repositories\ITipoPessoaRepository.cs" />
+    <Compile Include="Interfaces\Services\IHistoricoFaixaService.cs" />
     <Compile Include="Interfaces\Services\IPessoaService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
-    <Compile Include="Interfaces\Services\ITipoPessoaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HistoricoFaixaService.cs" />
     <Compile Include="Services\PessoaService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
-    <Compile Include="Services\TipoPessoaService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

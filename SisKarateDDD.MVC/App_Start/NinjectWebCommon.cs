@@ -1,5 +1,3 @@
-using SisKarateDDD.Application;
-using SisKarateDDD.Application.Interface;
 using SisKarateDDD.Domain.Interfaces.Services;
 using SisKarateDDD.Domain.Services;
 using SisKarateDDD.Infra.Data.Repositories;
@@ -68,17 +66,15 @@ namespace SisKarateDDD.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof (IAppServiceBase<>)).To(typeof (AppServiceBase<>));
-            kernel.Bind<ITipoPessoaAppService>().To<TipoPessoaAppService>();
-            kernel.Bind<IPessoaAppService>().To<PessoaAppService>();
-
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-            kernel.Bind<ITipoPessoaService>().To<TipoPessoaService>();
             kernel.Bind<IPessoaService>().To<PessoaService>();
+            kernel.Bind<IHistoricoFaixaService>().To<HistoricoFaixaService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
-            kernel.Bind<ITipoPessoaRepository>().To<TipoPessoaRepository>();
             kernel.Bind<IPessoaRepository>().To<PessoaRepository>();
+            kernel.Bind<IHistoricoFaixaRepository>().To<HistoricoFaixaRepository>();
+
+
         }        
     }
 }

@@ -36,6 +36,6 @@ namespace SisKarateDDD.MVC.ViewModels
         public int TipoPessoaId { get; set; }
 
         [Required]
-        public virtual TipoPessoaViewModel TipoPessoa { get; set; }
+        public virtual HistoricoFaixaViewModel TipoPessoa { get; set; }
     }
 }

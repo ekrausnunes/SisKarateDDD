@@ -9,10 +9,6 @@ namespace SisKarateDDD.Infra.Data.EntityConfig
         public PessoaConfiguration()
         {
             HasKey(p => p.IdPessoa);
-
-            HasRequired(p => p.TipoPessoa)
-                .WithMany()
-                .HasForeignKey(p => p.TipoPessoaId);
         }
     }
 }

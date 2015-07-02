@@ -47,13 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\SisKarateContext.cs" />
+    <Compile Include="EntityConfig\HistoricoFaixaConfiguration.cs" />
     <Compile Include="EntityConfig\PessoaConfiguration.cs" />
-    <Compile Include="EntityConfig\TipoPessoaConfiguration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\HistoricoFaixaRepository.cs" />
     <Compile Include="Repositories\PessoaRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
-    <Compile Include="Repositories\TipoPessoaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SisKarateDDD.Domain\SisKarateDDD.Domain.csproj">

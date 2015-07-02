@@ -15,7 +15,6 @@ namespace SisKarateDDD.Infra.Data.Context
             
         }
 
-        public virtual DbSet<TipoPessoa> TIPOPESSOA { get; set; }
         public virtual DbSet<Pessoa> PESSOA { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -31,8 +30,8 @@ namespace SisKarateDDD.Infra.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
 
-            modelBuilder.Configurations.Add(new TipoPessoaConfiguration());
             modelBuilder.Configurations.Add(new PessoaConfiguration());
+            modelBuilder.Configurations.Add(new HistoricoFaixaConfiguration());
         }
 
         public override int SaveChanges()
