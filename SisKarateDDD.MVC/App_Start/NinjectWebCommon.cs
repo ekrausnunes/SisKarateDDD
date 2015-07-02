@@ -66,15 +66,13 @@ namespace SisKarateDDD.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
-            kernel.Bind<IPessoaService>().To<PessoaService>();
-            kernel.Bind<IHistoricoFaixaService>().To<HistoricoFaixaService>();
-
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IPessoaRepository>().To<PessoaRepository>();
             kernel.Bind<IHistoricoFaixaRepository>().To<HistoricoFaixaRepository>();
-
-
+            
+            kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
+            kernel.Bind<IPessoaService>().To<PessoaService>();
+            kernel.Bind<IHistoricoFaixaService>().To<HistoricoFaixaService>();
         }        
     }
 }

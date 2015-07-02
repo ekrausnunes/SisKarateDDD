@@ -6,18 +6,20 @@ using System.Web.Mvc;
 using AutoMapper;
 using SisKarateDDD.Domain.Entities;
 using SisKarateDDD.Domain.Interfaces.Services;
+using SisKarateDDD.Domain.Services;
+using SisKarateDDD.Infra.Data.Repositories;
 using SisKarateDDD.MVC.ViewModels;
 
 namespace SisKarateDDD.MVC.Controllers
 {
     public class PessoaController : Controller
     {
-        private readonly IPessoaService _pessoaService;
+        private readonly IPessoaService _pessoaService = new PessoaService(new PessoaRepository());
 
-        public PessoaController(IPessoaService pessoaService)
-        {
-            _pessoaService = pessoaService;
-        }
+       // public PessoaController(IPessoaService pessoaService)
+       // {
+       //     _pessoaService = pessoaService;
+       // //}
 
         //
         // GET: /Pessoa/
